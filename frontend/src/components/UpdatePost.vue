@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {onBeforeMount, onMounted, ref} from "vue";
+import {onMounted, ref} from "vue";
 import {usePostStore} from "@/stores/postStore";
 import {useRoute} from "vue-router";
 

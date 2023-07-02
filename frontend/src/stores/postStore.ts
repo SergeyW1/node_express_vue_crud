@@ -22,12 +22,14 @@ export const usePostStore = defineStore('postStore', () => {
         return await axios.delete(`http://localhost:8080/posts/${id}`)
             .then(() => posts.value = posts.value.filter((x: any) => x.id !== id))
             .then(() => router.push({name: 'posts'}))
+            .catch(e => console.log(e))
     }
 
     const createPost = async (obj: object): Promise<any> => {
         return await axios.post('http://localhost:8080/posts', obj)
             .then((response) => posts.value.push(response.data))
             .then(() => router.push({name: 'posts'}))
+            .catch(e => console.log(e))
     }
 
     const updatePost = async (id: any, obj: any): Promise<any> => {
@@ -35,6 +37,7 @@ export const usePostStore = defineStore('postStore', () => {
         const result = Object.assign(prevObj, obj)
         return await axios.put(`http://localhost:8080/posts/${id}`, result)
             .then(() => router.push({name: 'posts'}))
+            .catch(e => console.log(e))
     }
 
     const timePassed = (date: any): string => {
