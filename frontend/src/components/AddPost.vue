@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {usePostStore} from "@/stores/postStore";
 import {ref} from "vue";
+import type {InterfacePost} from "@/interfaces/postinterface";
 
 const postStore = usePostStore()
 const date = ref(new Date())
@@ -8,13 +9,13 @@ const formPost = ref({
    title: '',
    content: '',
    createdAt: date.value.toISOString()
-})
+} as InterfacePost)
 
 </script>
 
 <template>
    <section class="p-6 dark:text-gray-100">
-      <form novalidate="" class="container w-full max-w-xl p-8 mx-auto space-y-6 rounded-md shadow dark:bg-gray-900">
+      <form class="container w-full max-w-xl p-8 mx-auto space-y-6 rounded-md shadow dark:bg-gray-900">
          <h2 class="w-full text-3xl font-bold leadi">Create Post</h2>
          <div>
             <label for="name" class="block mb-1 ml-1">Title</label>

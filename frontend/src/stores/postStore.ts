@@ -21,7 +21,6 @@ export const usePostStore = defineStore('postStore', () => {
     const deletePost = async (id: any): Promise<any> => {
         return await axios.delete(`http://localhost:8080/posts/${id}`)
             .then(() => posts.value = posts.value.filter((x: any) => x.id !== id))
-            .then(() => router.push({name: 'posts'}))
             .catch(e => console.log(e))
     }
 
@@ -47,9 +46,10 @@ export const usePostStore = defineStore('postStore', () => {
         let minutes = Math.floor(seconds / 60);
         let hours = Math.floor(minutes / 60);
         let days = Math.floor(hours / 24);
-        return `${days > 0 ? days + 'day, ' : ''} 
-        ${hours > 0 ? hours % 24 + 'hour, ' : ''}  
+        return `${days > 0 ? days + ' day, ' : ''} 
+        ${hours > 0 ? hours % 24 + ' hour, ' : ''}  
         ${minutes % 60} min and ${seconds % 60} sec ago`;
     }
+
     return {getPosts, deletePost, timePassed, createPost, getPost, updatePost, posts}
 })

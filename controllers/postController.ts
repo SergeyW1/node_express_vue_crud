@@ -2,12 +2,7 @@ const postModel = require('../postgres/models/post')
 
 class PostController {
     async createPost(req: any, res: any): Promise<string> {
-        // const model = await postModel.create(req.body)
-        const info = {
-            title: req.body.title,
-            content: req.body.content
-        }
-        const model = await postModel.create(info)
+        const model = await postModel.create(req.body)
         return res.json(model)
     }
 
